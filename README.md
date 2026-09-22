@@ -18,16 +18,33 @@ DeepSeek charges full price during **01:00–04:00 UTC** and **06:00–10:00 UTC
 
 ## Installation
 
+Install as a pi package straight from GitHub:
+
+```bash
+pi install git:github.com/zfadhli/pi-peak-hour
+```
+
+Then run `/reload` inside pi. To uninstall:
+
+```bash
+pi remove git:github.com/zfadhli/pi-peak-hour
+```
+
+> [!TIP]
+> To try it without installing, run `pi -e git:github.com/zfadhli/pi-peak-hour` — that loads the package for a single session only.
+
+<details>
+<summary>Local development install</summary>
+
 Symlink the extension into pi's global extension directory:
 
 ```bash
-ln -s "$PWD/deepseek-peak.ts" ~/.pi/agent/extensions/deepseek-peak.ts
+ln -s "$PWD/extensions/deepseek-peak.ts" ~/.pi/agent/extensions/deepseek-peak.ts
 ```
 
-Then run `/reload` inside pi. To remove it, delete the symlink and reload again.
+Then `/reload` inside pi. Your working copy becomes the live extension, so edits show up on every reload.
 
-> [!NOTE]
-> Extensions placed in `~/.pi/agent/extensions/` are auto-discovered by pi and can be hot-reloaded with `/reload`. For a quick one-off test without installing, use `pi -e ./deepseek-peak.ts`.
+</details>
 
 ## Usage
 
@@ -49,12 +66,13 @@ Peak membership is a half-open interval check (`start <= h < end`) against the t
 ## Project structure
 
 ```
-deepseek-peak.ts   # the extension: peak math, status text, /peak command
+extensions/deepseek-peak.ts   # peak math, status text, /peak command
+package.json                  # pi package manifest (pi-package keyword)
 ```
 
 ## Development
 
-Edit `deepseek-peak.ts`, then `/reload` in pi. If you installed via symlink, your working copy is the live extension.
+Edit `extensions/deepseek-peak.ts`, then `/reload` in pi. If you installed via symlink, your working copy is the live extension.
 
 > [!WARNING]
 > pi extensions run with full system permissions. The status line is the only side effect of this one, but review anything you install.

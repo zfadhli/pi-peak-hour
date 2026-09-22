@@ -1,0 +1,14 @@
+{
+  "name": "pi-peak-hour",
+  "version": "0.1.0",
+  "description": "Pi extension showing DeepSeek peak-hour pricing status in the footer",
+  "keywords": ["pi-package", "pi-extension", "deepseek"],
+  "license": "MIT",
+  "type": "module",
+  "pi": {
+    "extensions": ["./extensions"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  }
+}
