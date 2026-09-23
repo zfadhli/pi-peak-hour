@@ -39,7 +39,7 @@ pi remove git:github.com/zfadhli/pi-peak-hour
 Symlink the extension into pi's global extension directory:
 
 ```bash
-ln -s "$PWD/extensions/deepseek-peak.ts" ~/.pi/agent/extensions/deepseek-peak.ts
+ln -s "$PWD/index.ts" ~/.pi/agent/extensions/deepseek-peak.ts
 ```
 
 Then `/reload` inside pi. Your working copy becomes the live extension, so edits show up on every reload.
@@ -66,13 +66,13 @@ Peak membership is a half-open interval check (`start <= h < end`) against the t
 ## Project structure
 
 ```
-extensions/deepseek-peak.ts   # peak math, status text, /peak command
-package.json                  # pi package manifest (pi-package keyword)
+index.ts        # peak math, status text, /peak command
+package.json    # pi package manifest (pi-package keyword, files, peerDependencies)
 ```
 
 ## Development
 
-Edit `extensions/deepseek-peak.ts`, then `/reload` in pi. If you installed via symlink, your working copy is the live extension.
+Edit `index.ts`, then `/reload` in pi. If you installed via symlink, your working copy is the live extension.
 
 > [!WARNING]
 > pi extensions run with full system permissions. The status line is the only side effect of this one, but review anything you install.
